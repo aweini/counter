@@ -66,7 +66,7 @@ config.module.rules.push(
             {
                 loader: 'css-loader',
                 options: {
-                    module: true,
+                    module: false,
                     localIdentName: '[local]--[hash:base64:6]'
                 }
             },

@@ -11,11 +11,13 @@ import { createStore } from 'redux';
 //Reducer 函数最重要的特征是，它是一个纯函数。也就是说，只要是同样的输入，必定得到同样的输出
 //最好把 State 对象设成只读。你没法改变它，要得到新的 State，唯一办法就是生成一个新对象。Object.assign()
 //这样的好处是，任何时候，与某个 View 对应的 State 总是一个不变的对象
-function counter(state=0,action){
+function counter(state={value:0},action){
     let {type} = action;
     switch(type){
         case 'INCREMENT':
-            return ++state;
+            return Object.assign({}, state ,{
+                value: state.value+6
+            });
         default :
             return state;
     }
@@ -33,7 +35,8 @@ let store = createStore(counter);
 //store.dispatch接受一个 Action 对象作为参数，将它发送出去
 $(document).click(()=>{
     store.dispatch({
-        type: 'INCREMENT'
+        type: 'INCREMENT',
+        value: 6
     });
 })
 //订阅
@@ -42,7 +45,10 @@ $(document).click(()=>{
 //Store 允许使用store.subscribe方法设置监听函数，一旦 State 发生变化，就自动执行这个函数。
 //显然，只要把 View 的更新函数（对于 React 项目，就是组件的render方法或setState方法）放入subscribe的参数函数里，就会实现 View 的自动渲染。
 //store.subscribe方法返回一个函数，调用这个函数就可以解除监听。
+
+let curt = store.getState();
 store.subscribe(()=>{
-    let state = store.getState();
-    console.log(state);
+    let pre = curt;
+    curt = store.getState();
+    console.log(pre,curt, pre==curt);
 })
