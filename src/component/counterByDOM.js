@@ -1,5 +1,5 @@
 $root = $('#root')
-$addCounter = $(".addCounter")
+$addCounter = $("#addCounter")
 
 class Counter {
     //
@@ -24,8 +24,11 @@ class Counter {
                 <div class="maximum line"><span class="key">Maximum:</span> <span class="val">null</span></div>
                 <div class="allCount line"><span class="key">AllCount:</span> <span class="val">0</span></div>
             </div>
-        </div>`
+        </div>`;
        // rooter.append(this.el);
+       this.value = 0;
+       this.addCounterBtn = $('.addCounter');
+       this.subBtn = $('.sub');
     }
 
     init(){
@@ -34,5 +37,9 @@ class Counter {
     
 }
 
-var counter1 = new Counter();
-$root.append(counter1.init());
+
+
+$addCounter.click(function(){
+    var counterObj = new Counter();
+    $root.append(counterObj.init());
+})
