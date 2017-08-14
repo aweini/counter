@@ -6,6 +6,7 @@ button{border: none; outline: none; cursor: pointer;}
 
 .counterBox{
     width: 479px; background: url('./img/bg.png') no-repeat; box-sizing: border-box; border-top: 1px solid transparent;
+    margin-top:50px;
     button.addCounter{
         width: 161px; height: 59px; border: none; background: url('./img/addBtn.png');
     }
@@ -39,3 +40,18 @@ button{border: none; outline: none; cursor: pointer;}
 
 .name{  }
 .nameList{ position: absolute; top: 180px; width: 100%; border-top: 1px solid #eee; }
+
+.add-dragger-btn,.add-counter-btn{
+   width: 100px; height: 30px; border: none; background: red;cursor:pointer;
+   margin:10px;
+}
+
+.dragger{
+    position: absolute;
+    left:100px;
+    height: 100px;
+    background: pink;
+    width: 20px;
+    height: 20px;
+    cursor:pointer;
+}
