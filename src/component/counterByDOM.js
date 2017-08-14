@@ -107,6 +107,7 @@ class CounterDetail{
     increment(){
         this.value++;
         this.valueSpan.text(this.value);
+        //this.parent调用this还是this.parent
         this.parent.asyncState();
     }
 
